@@ -24,5 +24,20 @@ Route::post('login',[AdminController::class,'login']);
 Route::group(['middleware'=>'auth'],function(){
     Route::get('logout',[AdminController::class,'logout']);
     Route::get('home',[AdminController::class,'dashboard']);
+
+    //  Used prefix middle ware to respond only for prefix with lead
+    Route::group(['prefix'=>'lead'],function(){
+        Route::get('add-lead',[AdminController::class,'add_lead']);
+        Route::post('add-lead',[AdminController::class,'add_lead']);
+        Route::get('manage-lead',[AdminController::class,'manage_lead']);
+        Route::get('delete-lead/{id}',[AdminController::class,'delete_lead']);
+        Route::get('edit-lead/{id}',[AdminController::class,'edit_lead']);
+        Route::post('edit-lead/{id}',[AdminController::class,'edit_lead']);
+        Route::get('view-lead/{id}',[AdminController::class,'view_lead']);
+        Route::get('convert-lead/{id}',[AdminController::class,'convert_lead']);
+        Route::post('convert-lead/{id}',[AdminController::class,'convert_lead']);
+    });
+
+
 });
 
